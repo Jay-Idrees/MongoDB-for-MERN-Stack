@@ -11,3 +11,8 @@ I have created this repository as a self reference. It consists of general point
 **Installation of Mongoose**
 - `npm install mongoose --save`
 - It uses schemas - gives you better of control of the structure of documents you want to store in the database
+- Shcema is the blue print of the product and model builds on the schema
+
+# Using Mongoose
+
+- Makes it easier to run MongoDB driver. Note that installing this package does not install the mongo DB database
