@@ -45,7 +45,7 @@ mongoose
   - In MongoDB a collection is like a table and 
 
 ```Javascript
-
+// The code below goes into the user.js in the models folder
 const mongoose = require('mongoose');
 // Mongoose unique validator is an NPM package that checks the data points 
 // before they are admitted as documents inside the database
@@ -125,4 +125,3 @@ const { name, email, password } = req.body;
   res.status(201).json({user: createdUser.toObject({ getters: true })});
 };
 
-//
