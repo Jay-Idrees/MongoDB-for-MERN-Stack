@@ -16,3 +16,7 @@ I have created this repository as a self reference. It consists of general point
 # Using Mongoose
 
 - Makes it easier to run MongoDB driver. Note that installing this package does not install the mongo DB database
+
+**Establishing a Connection**
+- In the `app.js` you will have to import mongoose with `const mongoose=require('mongoose');`
+- 
