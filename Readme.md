@@ -25,6 +25,7 @@ I have created this repository as a self reference. It consists of general point
 mongoose
   .connect('mongodb+srv://<user:password>@cluster0-ntrwp.mongodb.net/<table name in mongo cluster>?retryWrites=true&w=majority')
   .then(() => {
+    // First connct and once a connection has been established, start the server at port 5000
     app.listen(5000);
   })
   .catch(err => {
@@ -34,5 +35,29 @@ mongoose
   ```
 
   **Designing a collection**
-  - The designs for a collection or schema are kept in the model
+  - The designs for a collection or schema are kept in the models folder which act as a `blue print`. See below an example
 
+```Javascript
+
+const mongoose = require('mongoose');
+// Mongoose unique validator is an NPM package that checks the data points before they are admitted as documents inside the database
+const uniqueValidator = require('mongoose-unique-validator');
+
+// Schema is a blue print template that stores individual datapoints usually coming from forms to an object collection
+const Schema = mongoose.Schema;
+
+
+const userSchema = new Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true, minlength: 6 },
+    image: { type: String, required: true },
+    places: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Place'}]
+});
+
+userSchema.plugin(uniqueValidator);
+
+module.exports = mongoose.model('User', userSchema);
+
+```
+  
