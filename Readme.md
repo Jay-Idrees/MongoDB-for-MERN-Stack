@@ -88,8 +88,24 @@ module.exports = mongoose.model('User', userSchema);
 
 - Each datapoint captured in React will have a name, a tag is assigned to it in Express in the post-request. The tag is usually the same as the field such as name:name 
 
-- The Flow is: React Form `req.body` -> Express Route `Post` Request -> MongoDB schema/collection or object table
+- The Flow is: React Form data object captured via `req.body` or `req.params`-> Express Route `Post` Request -> MongoDB schema/collection or object table
 
-- When data comes to 
+- When data comes in `reqq.body` you can use object destructuring to extract specific data points
 
+- Then put tags on them, that match the tags in the Mongoose schema for instance the userSchema for the User table as shown below
 
+```Javascript
+
+const { name, email, password } = req.body;
+
+// Note that the User here is the same as the User in the schema
+  const createdUser = new User({
+    name, // this is the sort version of typing name:name
+    email,
+    image: 'https://live.staticflickr.com/7631/26849088292_36fc52ee90_b.jpg',
+    password,
+    places: []
+  });
+
+// The above code is creating a user object. 
+// It is then stored into the User table as specified into the userSchema
