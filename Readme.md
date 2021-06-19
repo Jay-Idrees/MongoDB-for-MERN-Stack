@@ -109,3 +109,20 @@ const { name, email, password } = req.body;
 
 // The above code is creating a user object. 
 // It is then stored into the User table as specified into the userSchema
+
+  try {
+      // This sis saving the data in mongoose
+      // The creatUser already directs the data to be stored into the User table
+    await createdUser.save();
+  } catch (err) {
+    const error = new HttpError(
+      'Signing up failed, please try again.',
+      500
+    );
+    return next(error);
+  }
+
+  res.status(201).json({user: createdUser.toObject({ getters: true })});
+};
+
+//
