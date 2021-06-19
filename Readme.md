@@ -35,7 +35,9 @@ mongoose
   ```
 
   **Designing a collection**
-  - The designs for a collection or schema are kept in the models folder which act as a `blue print`. See below an example
+  - The designs for a collection (like a table in SQL- note that MongoDB by definition has no tables, the equvilant is ) or schema are kept in the models folder which act as a `blue print`. See below an example
+
+  - In MongoDB a collection is like a table and 
 
 ```Javascript
 
@@ -54,12 +56,19 @@ const userSchema = new Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true, minlength: 6 },
     image: { type: String, required: true },
+    // ObjectId is making a reference to a document in another collection, place in this example
+    // Here Place is referring to the collection being referred to 
+    // Similarly the place Schema will also have 
+    // creator: { type: mongoose.Types.ObjectId, required: true, ref: 'User'} to crossreference with user
     places: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Place'}]
 });
+
+// you can also add unique case sensitive as `uniqueCaseInsensitive:true` if you do not care about case insnsitivity
 
 userSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);
 
 ```
-  
+
+
