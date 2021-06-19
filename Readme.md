@@ -13,6 +13,11 @@ I have created this repository as a self reference. It consists of general point
 - It uses schemas - gives you better of control of the structure of documents you want to store in the database
 - Shcema is the blue print of the product and model builds on the schema
 
+**Installtion of Unique Validator with mongoose**
+- `npm install mongoose-unique-validator`
+- This package is different from the package `express-validator` which is used to test data coming from a post request
+- What `mongoose-unique-validator` does instead is that it double checks that there is no pre-existing user before a new user document object is stored in the user collection
+
 # Using Mongoose
 
 - Makes it easier to run MongoDB driver. Note that installing this package does not install the mongo DB database
@@ -23,7 +28,7 @@ I have created this repository as a self reference. It consists of general point
 
 ```Javascript
 mongoose
-  .connect('mongodb+srv://<user:password>@cluster0-ntrwp.mongodb.net/<table name in mongo cluster>?retryWrites=true&w=majority')
+  .connect('mongodb+srv://<user:password>@cluster0-ntrwp.mongodb.net/<database name in mongo cluster>?retryWrites=true&w=majority')
   .then(() => {
     // First connct and once a connection has been established, start the server at port 5000
     app.listen(5000);
@@ -65,10 +70,12 @@ const userSchema = new Schema({
 
 // you can also add unique case sensitive as `uniqueCaseInsensitive:true` if you do not care about casing
 
+// Plugin(uniqueValidator) will check that there is no duplicate in the collection 
 userSchema.plugin(uniqueValidator);
+
 
 module.exports = mongoose.model('User', userSchema);
 
 ```
-
+- Note that Shcemas are like classes and constructor functions - thats why they get placed under the models folder
 
