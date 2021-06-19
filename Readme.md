@@ -73,9 +73,23 @@ const userSchema = new Schema({
 // Plugin(uniqueValidator) will check that there is no duplicate in the collection 
 userSchema.plugin(uniqueValidator);
 
-
+// Here you are also assigining a name 'User' to the collection/table that stores data about all the users
 module.exports = mongoose.model('User', userSchema);
+
+// Note that the collection name 'User' must match exactly whereever it is used even 'user' wont work
+// You will run queries into this table to screen for pre-existing users or add new users
 
 ```
 - Note that Shcemas are like classes and constructor functions - thats why they get placed under the models folder
+
+- What this 'Schema' object is doing is creating an object table template into which the incoming data from Express.JS will be placed
+
+- Express.JS receives data from forms created with React
+
+- Each datapoint captured in React will have a name, a tag is assigned to it in Express in the post-request. The tag is usually the same as the field such as name:name 
+
+- The Flow is: React Form `req.body` -> Express Route `Post` Request -> MongoDB schema/collection or object table
+
+- When data comes to 
+
 
