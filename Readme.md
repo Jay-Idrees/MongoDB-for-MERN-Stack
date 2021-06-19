@@ -95,7 +95,7 @@ module.exports = mongoose.model('User', userSchema);
 - Then put tags on them, that match the tags in the Mongoose schema for instance the userSchema for the User table as shown below
 
 ```Javascript
-
+// The code below goes into the user-controller.js file
 const { name, email, password } = req.body;
 
 // Note that the User here is the same as the User collection specified in the schema
