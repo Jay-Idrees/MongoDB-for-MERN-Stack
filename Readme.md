@@ -63,7 +63,7 @@ const userSchema = new Schema({
     places: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Place'}]
 });
 
-// you can also add unique case sensitive as `uniqueCaseInsensitive:true` if you do not care about case insnsitivity
+// you can also add unique case sensitive as `uniqueCaseInsensitive:true` if you do not care about casing
 
 userSchema.plugin(uniqueValidator);
 
