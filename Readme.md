@@ -98,7 +98,7 @@ module.exports = mongoose.model('User', userSchema);
 
 const { name, email, password } = req.body;
 
-// Note that the User here is the same as the User in the schema
+// Note that the User here is the same as the User collection specified in the schema
   const createdUser = new User({
     name, // this is the sort version of typing name:name
     email,
