@@ -40,10 +40,12 @@ mongoose
 ```Javascript
 
 const mongoose = require('mongoose');
-// Mongoose unique validator is an NPM package that checks the data points before they are admitted as documents inside the database
+// Mongoose unique validator is an NPM package that checks the data points 
+// before they are admitted as documents inside the database
 const uniqueValidator = require('mongoose-unique-validator');
 
-// Schema is a blue print template that stores individual datapoints usually coming from forms to an object collection
+// Schema is a blue print template that stores individual datapoints 
+// usually coming from forms to an object collection
 const Schema = mongoose.Schema;
 
 
